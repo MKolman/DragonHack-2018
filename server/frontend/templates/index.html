@@ -1,8 +1,57 @@
+<!DOCTYPE html>
 <html>
-<head>
-    <title>Hey</title>
-</head>
-<body>
-    Hey hey
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Around the World in 80 s</title>
+    <link rel="stylesheet" href="/static/bulma.min.css">
+    <link rel="stylesheet" href="/static/style.css">
+
+    <script src="/static/jquery-3.3.1.min.js"></script>
+    <script src="/static/scripts.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.2.0/leaflet.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.2.0/leaflet.js"></script>
+  </head>
+  <body class="intro">
+
+  <section class="hero is-fullheight">
+    <!-- Hero head: will stick at the top -->
+    <div class="hero-head">
+      <nav class="navbar">
+        <div class="container">
+          <div class="main-title">
+            Around the World in 80 seconds
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Hero content: will be in the middle -->
+    <div id="themap" class="hero-body">
+      <div class="container has-text-centered">
+        <div id="intro-caption">
+          <div class="pulsating">
+            Speak to start
+          </div>
+        </div>
+        <div id="locating" style="display:none;">
+          <div class="pulsating">
+            Locating...
+          </div>
+        </div>
+
+        <!-- <div id="themap"></div> -->
+      </div>
+    </div>
+
+    <!-- Hero footer: will stick at the bottom -->
+    <div class="hero-foot">
+      Coded with <3 by PhPhy
+    </div>
+  </section>
+
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 </body>
 </html>

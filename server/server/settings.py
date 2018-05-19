@@ -25,7 +25,7 @@ SECRET_KEY = '8+hi^s%+tja!ykohydv*m-up1*xzy^ytq-&)g0*4*)y9v%g=cu'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['dragon.kolman.si']
+ALLOWED_HOSTS = ['dragon.kolman.si', '127.0.0.1']
 
 
 # Application definition

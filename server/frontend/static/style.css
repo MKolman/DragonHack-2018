@@ -1,0 +1,48 @@
+body {
+  background: #F3E2E0;
+  color: #723147;
+}
+
+.main-title {
+  font-size: 56px;
+  text-align: center;
+  margin: 0 auto;
+  font-weight: 200;
+  transition: margin-top 0.75s, font-size 0.75s;
+}
+
+.intro .main-title {
+  margin-top: 25%;
+  font-size: 64px;
+}
+
+.intro .hero-body {
+  align-items: inherit !important;
+}
+
+@keyframes pulsatingAnimation { /* flame pulses */
+  0%,100%   { opacity:1; }
+  50%  { opacity:0.5; }
+}
+#intro-caption {
+    font-size: 32px;
+    font-weight: 200px;
+}
+#locating {
+    font-size: 48px;
+    font-weight: 200px;
+}
+
+.pulsating {
+  opacity:1;
+  animation: pulsatingAnimation 2s linear infinite;
+}
+
+.hero-foot {
+  text-align: center;
+  padding: 10px;
+}
+
+#themap {
+  flex: 1;
+}

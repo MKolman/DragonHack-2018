@@ -5,6 +5,6 @@ server {
 
     location / {
         include proxy_params;
-        proxy_pass http://unix:/home/web/Dragonhack-2018/server/myproject.sock;
+        proxy_pass http://unix:/home/web/DragonHack-2018/server/myproject.sock;
     }
 }

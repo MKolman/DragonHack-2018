@@ -7,9 +7,9 @@ After=network.target
 [Service]
 User=ubuntu
 Group=www-data
-WorkingDirectory=/home/web/Dragonhack-2018/server/
-Environment="PATH=/home/web/Dragonhack-2018/server/venv/bin"
-ExecStart=/home/web/Dragonhack-2018/server/venv/bin/gunicorn --workers 3 --bind unix:myproject.sock -m 007 server.wsgi
+WorkingDirectory=/home/web/DragonHack-2018/server/
+Environment="PATH=/home/web/DragonHack-2018/server/venv/bin"
+ExecStart=/home/web/DragonHack-2018/server/venv/bin/gunicorn --workers 3 --bind unix:myproject.sock -m 007 server.wsgi
 
 [Install]
 WantedBy=multi-user.target

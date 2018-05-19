@@ -17,10 +17,10 @@ def parse_command(request):
         cache.set('page_state', 'intro')
         cache.set('zoom_level', 10)
     elif command_type == 'location':
-        cache.set('location', command_value)
+        cache.set('location', (46.05223, 14.50567))
         cache.set('page_state', 'map')
     elif command_type == 'weather':
-        cache.set('location', command_value)
+        cache.set('location', (46.557462, 15.645982))
     elif command_type == 'zoom':
         cache.set('zoom_level', cache.get('zoom_level', 10)+int(command_value))
     elif command_type == 'change_type':

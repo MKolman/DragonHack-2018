@@ -6,10 +6,11 @@ from django.http import JsonResponse
 def index(request):
     return render(request, 'index.html')
 
-
 def observe(request):
     return render(request, 'observe.html')
 
+def vr(request):
+    return render(request, 'vr.html')
 
 def get_state(request):
     return JsonResponse({

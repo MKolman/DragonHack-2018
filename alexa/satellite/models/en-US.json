@@ -1,0 +1,50 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "travel",
+      "types": [
+
+      ],
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": [
+
+          ]
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": [
+
+          ]
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": [
+
+          ]
+        },
+        {
+          "name": "FindLocationIntent",
+          "slots": [
+            {
+              "name": "weather",
+              "type": "AMAZON.WeatherCondition"
+            },
+            {
+              "name": "country",
+              "type": "AMAZON.Country"
+            }
+          ],
+          "samples": [
+            "{country}",
+            "{weather}",
+            "I like it {weather}",
+            "i want to visit {country}",
+            "Where it is {weather}"
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "travel",
+      "intents": [{
+          "name": "AMAZON.CancelIntent",
+          "samples": [
+
+          ]
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": [
+
+          ]
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": [
+
+          ]
+        },
+        {
+          "name": "FindLocationIntent",
+          "slots": [{
+              "name": "weather",
+              "type": "AMAZON.WeatherCondition"
+            },
+            {
+              "name": "country",
+              "type": "AMAZON.Country"
+            }
+          ],
+          "samples": [
+            "{country}",
+            "{weather}",
+            "I like it {weather}",
+            "i want to visit {country}",
+            "Where it is {weather}"
+          ]
+        },
+        {
+          "name": "MoveIntent",
+          "samples": [
+            "go {direction}",
+            "move {direction}",
+            "slightly {direction}",
+            "{direction}"
+          ],
+          "slots": [{
+            "name": "direction",
+            "type": "LIST_OF_DIRECTIONS"
+          }]
+        }
+      ],
+      "types": [{
+          "name": "LIST_OF_DIRECTIONS",
+          "values": [{
+            "name": {
+              "value": "north",
+              "synonyms": ["up"]
+            }
+          }, {
+            "name": {
+              "value": "south",
+              "synonyms": ["down"]
+            }
+          }, {
+            "name": {
+              "value": "east",
+              "synonyms": ["right"]
+            }
+          }, {
+            "name": {
+              "value": "west",
+              "synonyms": ["left"]
+            }
+          }]
+        },
+        {
+          "name": "LIST_OF_ZOOM_LEVELS",
+          "values": [{
+              "name": {
+                "value": "in",
+                "synonyms": ["bigger"]
+              }
+            },
+            {
+              "name": {
+                "value": "out",
+                "synonyms": ["smaller"]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

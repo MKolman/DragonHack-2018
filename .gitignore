@@ -1,3 +1,6 @@
 venv
 __pycache__
 *.sqlite3
+
+.ask
+node_modules

@@ -27,7 +27,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['dragon.kolman.si', '127.0.0.1']
 
-
 # Application definition
 
 INSTALLED_APPS = [

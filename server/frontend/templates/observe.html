@@ -1,0 +1,58 @@
+<html>
+<head>
+    <title>Hey</title>
+    <script type="text/javascript" src="/static/js/jquery-3.3.1.min.js"></script>
+    <style>
+        #container {
+            width: 800px;
+            margin: auto;
+        }
+        #map-holder {
+            perspective: 1000px;
+        }
+        img#map {
+            transform: rotateX(50deg);
+            max-width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id='container'>
+        <p id="data">
+            No DATA
+        </p>
+        <div id='map-holder'>
+            <img id='map' src='/static/img/map.jpg' />
+        </div>
+    </div>
+    <script>
+        let rotX=0, rotY=0, rotZ=0;
+        function setRotate() {
+            $('img').css('transform', 'rotateX('+rotX+'deg) rotateY('+rotY+'deg) rotateZ('+rotZ+'deg) ');
+        }
+        $('#map-holder').animate({width: "1600px", 'margin-left': "-400px"}, 2000)
+        $('img').animate({  borderSpacing: -90}, {
+            step: function(now,fx) {
+                rotX = -now/1.5;
+                setRotate();
+            },
+            duration: 2000
+        },'linear');
+
+        function handleOrientation(event) {
+            var absolute = event.absolute;
+            var alpha    = event.alpha;
+            var beta     = event.beta;
+            var gamma    = event.gamma;
+            $('#data').html(absolute + ' ' + parseInt(alpha) + ' ' + parseInt(beta) + ' ' + parseInt(gamma))
+            rotZ = alpha;
+            rotX = beta;
+            rotY = -gamma;
+            setRotate();
+          // Do stuff with the new orientation data
+        }
+        window.addEventListener("deviceorientation", handleOrientation, true);
+
+</script>
+</body>
+</html>

@@ -49,6 +49,46 @@ const FindLocationIntentHandler = {
   },
 };
 
+const moveResponses = [
+  'how about this?',
+  'is it better?',
+  'yes, sir!',
+  'moving..'
+]
+
+const MoveIntentHandler = {
+  canHandle(handlerInput) {
+    return handlerInput.requestEnvelope.request.type === 'IntentRequest' &&
+      handlerInput.requestEnvelope.request.intent.name === 'MoveIntent';
+  },
+  async handle(handlerInput) {
+    const filledSlots = handlerInput.requestEnvelope.request.intent.slots;
+    const slotValues = getSlotValues(filledSlots);
+
+    const direction = slotValues.direction ? slotValues.direction.resolved : null;
+
+    let sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
+
+    let speechText = '';
+    if (direction) {
+      let index = typeof sessionAttributes.currentMoveResponse !== 'undefined' ? sessionAttributes.currentMoveResponse + 1 : 0;
+
+      index = index % moveResponses.length;
+      speechText = moveResponses[index];
+
+      sessionAttributes.currentMoveResponse = index;
+      await handlerInput.attributesManager.setSessionAttributes(sessionAttributes);
+    }
+
+    return handlerInput.responseBuilder
+      .speak(speechText)
+      .reprompt(speechText)
+      .withSimpleCard('Move', speechText)
+      .withShouldEndSession(false)
+      .getResponse();
+  },
+};
+
 const HelpIntentHandler = {
   canHandle(handlerInput) {
     return handlerInput.requestEnvelope.request.type === 'IntentRequest' &&
@@ -154,6 +194,7 @@ exports.handler = skillBuilder
   .addRequestHandlers(
     LaunchRequestHandler,
     FindLocationIntentHandler,
+    MoveIntentHandler,
     HelpIntentHandler,
     CancelAndStopIntentHandler,
     SessionEndedRequestHandler

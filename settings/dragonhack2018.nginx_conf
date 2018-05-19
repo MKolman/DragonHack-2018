@@ -1,0 +1,10 @@
+# Symlink to /etc/nginx/sites-enabled/
+server {
+    listen 80;
+    server_name dragon.pyphy.si;
+
+    location / {
+        include proxy_params;
+        proxy_pass http://unix:/home/web/Dragonhack-2018/server/myproject.sock;
+    }
+}

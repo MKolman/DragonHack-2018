@@ -25,7 +25,7 @@ SECRET_KEY = '8+hi^s%+tja!ykohydv*m-up1*xzy^ytq-&)g0*4*)y9v%g=cu'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['dragon.kolman.si', '127.0.0.1']
+ALLOWED_HOSTS = ['dragon.kolman.si', '*']
 
 # Application definition
 
@@ -81,6 +81,13 @@ DATABASES = {
     }
 }
 
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'unique-snowflake',
+        'TIMEOUT': 600,
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators

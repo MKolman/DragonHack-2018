@@ -1,5 +1,14 @@
+import math
+
 from django.core.cache import cache
 from django.http import JsonResponse
+
+
+def gps_from_location(location):
+    from geopy.geocoders import Nominatim
+    geolocator = Nominatim()
+    location = geolocator.geocode(location)
+    return location.latitude, location.longitude
 
 
 # Create your views here.
@@ -22,11 +31,22 @@ def parse_command(request):
         cache.set('page_state', 'intro')
         cache.set('zoom_level', 10)
     elif command_type == 'location':
-        cache.set('location', (46.05223, 14.50567))
+        cache.set('location', gps_from_location(command_value))
         cache.set('page_state', 'map')
     elif command_type == 'weather':
         cache.set('location', (46.557462, 15.645982))
         cache.set('page_state', 'map')
+    elif command_type == 'move':
+        lat, lon = cache.get('location', (46.557462, 15.645982))
+        if command_value == 'north':
+            lat += 1
+        elif command_value == 'south':
+            lat -= 1
+        elif command_value == 'east':
+            lon += 1.0/math.cos(lat)
+        elif command_value == 'west':
+            lon -= 1.0/math.cos(lat)
+        cache.set('location', (lat, lon))
     elif command_type == 'zoom':
         cache.set('zoom_level', cache.get('zoom_level', 10)+int(command_value))
     elif command_type == 'change_type':

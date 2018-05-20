@@ -1,7 +1,9 @@
 import math
+from datetime import datetime
 
 from django.core.cache import cache
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
+
 
 
 def gps_from_location(location):
@@ -83,3 +85,9 @@ def get_rotation(request):
         'y': y,
         'z': z,
     })
+
+
+def arduino(request):
+    now = datetime.now()
+    n1, n2 = now.minute, now.second
+    return HttpResponse('{} {}'.format(n1, n2))

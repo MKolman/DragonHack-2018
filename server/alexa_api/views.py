@@ -34,10 +34,12 @@ def parse_command(request):
         cache.set('zoom_level', 10)
     elif command_type == 'location':
         cache.set('location', gps_from_location(command_value))
+        send_location_to_arduino()
         if cache.get('page_state', 'intro') == 'intro':
             cache.set('page_state', 'map')
     elif command_type == 'weather':
         cache.set('location', (46.557462, 15.645982))
+        send_location_to_arduino()
         if cache.get('page_state', 'intro') == 'intro':
             cache.set('page_state', 'map')
     elif command_type == 'move':
@@ -52,6 +54,7 @@ def parse_command(request):
         elif command_value == 'west':
             lon += 400.0/math.cos(lat)/2**zoom
         cache.set('location', (lat, lon))
+        send_location_to_arduino()
     elif command_type == 'zoom':
         cache.set('zoom_level', cache.get('zoom_level', 10)+int(command_value))
     elif command_type == 'change_type':
@@ -88,6 +91,16 @@ def get_rotation(request):
 
 
 def arduino(request):
-    now = datetime.now()
-    n1, n2 = now.minute, now.second
+    """ Get and save arduino IP """
+    cache.set('arduino_ip', request.GET.get('ip', None), 3600*24)
+    n1, n2 = 1, 1
     return HttpResponse('{} {}'.format(n1, n2))
+
+
+def send_location_to_arduino():
+    if cache.get('location', None) is None or cache.get('arduino_ip', '193.2.178.222') is None:
+        return
+    from urllib import request
+    lat, lon = cache.get('location', None)
+    lat, lon = int(lat), int(lon)
+    request.urlopen('http://{}/body?lat={}&lon={}'.format(cache.get('arduino_ip'), lat, lon), timeout=1)

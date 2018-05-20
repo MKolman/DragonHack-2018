@@ -46,9 +46,9 @@ def parse_command(request):
         elif command_value == 'south':
             lat -= 400 / 2**zoom
         elif command_value == 'east':
-            lon += 400.0/math.cos(lat)/2**zoom
-        elif command_value == 'west':
             lon -= 400.0/math.cos(lat)/2**zoom
+        elif command_value == 'west':
+            lon += 400.0/math.cos(lat)/2**zoom
         cache.set('location', (lat, lon))
     elif command_type == 'zoom':
         cache.set('zoom_level', cache.get('zoom_level', 10)+int(command_value))

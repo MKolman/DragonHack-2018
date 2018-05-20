@@ -26,19 +26,37 @@
 
     </div>
     <script>
-
+        let isPhone = -2;
         let rotX=0, rotY=0, rotZ=0;
         function setRotate() {
             $('.vrmap').css('transform', 'rotateX('+rotX+'deg) rotateY('+rotY+'deg) rotateZ('+rotZ+'deg) ');
         }
+
+        function fetchOrientation() {
+            $.get('/alexa/get_rotation', function(data){
+                console.log(data, data.x, data.y, data.z);
+                rotX = data.x;
+                rotY = data.y;
+                rotZ = data.z;
+                setRotate();
+                if (isPhone <= 0) {
+                    fetchOrientation();
+                }
+            });
+        }
+
         function handleOrientation(event) {
+            isPhone += 1;
             rotZ = event.alpha;
             rotX = -event.gamma;
             rotY = event.beta;
             setRotate();
+            if (isPhone > 0) {
+                $.get('/alexa/set_rotation?x='+rotX+'&y='+rotY+'&z='+rotZ);
+            }
         }
         window.addEventListener("deviceorientation", handleOrientation, true);
-
+        fetchOrientation();
     </script>
   </body>
 </html>

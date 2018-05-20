@@ -61,3 +61,25 @@ def parse_command(request):
         'message': 'Successfully received command {}'.format(command_type),
         'success': True
     })
+
+
+def set_rotation(request):
+    if request.method == 'GET':
+        data = request.GET
+    elif request.method == 'POST':
+        data = request.POST
+
+    cache.set('rotation_data', (data.get('x'), data.get('y'), data.get('z')))
+    return JsonResponse({
+        'success': True
+    })
+
+
+def get_rotation(request):
+    x, y, z = cache.get('rotation_data', (0, 0, 0))
+    return JsonResponse({
+        'success': True,
+        'x': x,
+        'y': y,
+        'z': z,
+    })

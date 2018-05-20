@@ -14,7 +14,7 @@ def gps_from_location(location):
     from geopy.geocoders import Nominatim
     geolocator = Nominatim()
     location = geolocator.geocode(location)
-    return location.latitude, location.longitude
+    return None if location is None else location.latitude, location.longitude
 
 
 # Create your views here.
@@ -42,16 +42,18 @@ def parse_command(request):
         if cache.get('page_state', 'intro') == 'intro':
             cache.set('page_state', 'map')
     elif command_type == 'weather':
-        if command_value in ['hot', 'sunny']:
-            command_value = choice(hot_sunny)
-        elif command_value in ['cool', 'humid', 'rain', 'rainy', 'thunderstorm']:
-            command_value = choice(cool)
-        elif command_value in ['snow', 'cold', 'freezing']:
-            command_value = choice(snow)
-        else:
-            command_value = choice(warm_pleasant)
-
-        cache.set('location', gps_from_location(command_value))
+        result = None
+        while result is None:
+            if command_value in ['hot', 'sunny']:
+                command_value = choice(hot_sunny)
+            elif command_value in ['cool', 'humid', 'rain', 'rainy', 'thunderstorm']:
+                command_value = choice(cool)
+            elif command_value in ['snow', 'cold', 'freezing']:
+                command_value = choice(snow)
+            else:
+                command_value = choice(warm_pleasant)
+            result = gps_from_location(command_value)
+        cache.set('location', result)
         send_location_to_arduino()
         if cache.get('page_state', 'intro') == 'intro':
             cache.set('page_state', 'map')

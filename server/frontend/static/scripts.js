@@ -1,4 +1,9 @@
 var App = {
+  isPhone: false,
+  rotX: 0,
+  rotY: 0,
+  rotZ: 0,
+
   state: {
     location: null,
     map_type: 'TRUE_COLOR',
@@ -49,7 +54,7 @@ var App = {
   },
 
   updatePageState: function(page_state) {
-    if (page_state == App.state.page_state)
+    if (page_state == App.state.page_state || $('body').hasClass('mobilevr'))
       return;
 
     App.state.page_state = page_state;
@@ -88,6 +93,35 @@ var App = {
     });
 
     Map.init();
+  },
+
+  fetchOrientation: function() {
+    if (App.isPhone)
+      return;
+
+    $.get('/alexa/get_rotation', function(data) {
+      // console.log(data, data.x, data.y, data.z);
+      App.rotX = data.x;
+      App.rotY = data.y;
+      App.rotZ = data.z;
+      App.setRotate();
+
+      window.setTimeout(App.fetchOrientation, 100);
+    });
+  },
+
+  handleOrientation: function(event) {
+    App.isPhone = true;
+    App.rotZ = event.alpha;
+    App.rotX = -event.gamma;
+    App.rotY = event.beta;
+    App.setRotate();
+
+    $.get('/alexa/set_rotation?x=' + App.rotX + '&y=' + App.rotY + '&z=' + App.rotZ);
+  },
+
+  setRotate: function() {
+    $('.vrmap').css('transform', `rotateX(${App.rotX}deg) rotateY(${App.rotY}deg) rotateZ(${App.rotZ}deg)`);
   }
 }
 
@@ -185,4 +219,8 @@ $(document).ready(function() {
     Map.init();
     Map.initVR();
   }, 200);
+
+  if ($('body').hasClass('mobilevr'))
+    window.addEventListener("deviceorientation", App.handleOrientation, true);
+  App.fetchOrientation();
 });

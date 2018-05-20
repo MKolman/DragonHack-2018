@@ -12,6 +12,9 @@ def observe(request):
 def vr(request):
     return render(request, 'vr.html')
 
+def mobilevr(request):
+    return render(request, 'mobilevr.html')
+
 def get_state(request):
     return JsonResponse({
         'page_state': cache.get('page_state', None),

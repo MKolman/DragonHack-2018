@@ -7,4 +7,5 @@ urlpatterns = [
     path('observe', views.observe, name='observe'),
     path('state', views.get_state, name='state'),
     path('vr', views.vr, name='vr'),
+    path('mobilevr', views.mobilevr, name='mobilevr'),
 ]

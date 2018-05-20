@@ -1,0 +1,628 @@
+<script type="text/javascript">
+  $('body').css("overflow-y","hidden");
+  $('div.container-fluid').css("padding","0");
+  $('div.container-fluid').css("margin","0");
+  $('div.col-md-12').css("padding","0");
+  $('div.container-fluid').removeClass('maxwidthclass');
+  message.innerHTML="Showing 55 places that are snowy and sunny in May";
+  function initialize() {
+    var myOptions = {
+      zoom: 2,
+      center: {lat: 20, lng: 0},
+      //mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    var map = new google.maps.Map(document.getElementById("map_canvas"),
+        myOptions);
+    var infowindow = new google.maps.InfoWindow({});
+
+      var markerUAK = new google.maps.Marker({
+        position: {lat: 61.1605, lng: -45.426 },
+        map: map,
+        title: "Narsarsuaq, Greenland",
+        icon: { path: google.maps.SymbolPath.CIRCLE, scale: 4, strokeColor: 'black', fillColor: 'red', strokeWeight: 1, fillOpacity: 1 },
+      });
+      google.maps.event.addListener(markerUAK, 'click', function() {
+        infowindow.setContent('Narsarsuaq, Greenland<br/><a href="/places/BGBW" target="_blank">More info</a>');
+        infowindow.open(map,markerUAK);
+      });
+
+      var markerGOH = new google.maps.Marker({
+        position: {lat: 64.1909, lng: -51.6781 },
+        map: map,
+        title: "Nuuk, Greenland",
+        icon: { path: google.maps.SymbolPath.CIRCLE, scale: 4, strokeColor: 'black', fillColor: 'red', strokeWeight: 1, fillOpacity: 1 },
+      });
+      google.maps.event.addListener(markerGOH, 'click', function() {
+        infowindow.setContent('Nuuk, Greenland<br/><a href="/places/BGGH" target="_blank">More info</a>');
+        infowindow.open(map,markerGOH);
+      });
+
+      var markerKUS = new google.maps.Marker({
+        position: {lat: 65.5736, lng: -37.1236 },
+        map: map,
+        title: "Kulusuk, Greenland",
+        icon: { path: google.maps.SymbolPath.CIRCLE, scale: 4, strokeColor: 'black', fillColor: 'red', strokeWeight: 1, fillOpacity: 1 },
+      });
+      google.maps.event.addListener(markerKUS, 'click', function() {
+        infowindow.setContent('Kulusuk, Greenland<br/><a href="/places/BGKK" target="_blank">More info</a>');
+        infowindow.open(map,markerKUS);
+      });
+
+      var markerJFR = new google.maps.Marker({
+        position: {lat: 62.01474, lng: -49.67094 },
+        map: map,
+        title: "Paamiut, Greenland",
+        icon: { path: google.maps.SymbolPath.CIRCLE, scale: 4, strokeColor: 'black', fillColor: 'red', strokeWeight: 1, fillOpacity: 1 },
+      });
+      google.maps.event.addListener(markerJFR, 'click', function() {
+        infowindow.setContent('Paamiut, Greenland<br/><a href="/places/BGPT" target="_blank">More info</a>');
+        infowindow.open(map,markerJFR);
+      });
+
+      var markerAEY = new google.maps.Marker({
+        position: {lat: 65.66, lng: -18.0727 },
+        map: map,
+        title: "Akureyri, Iceland",
+        icon: { path: google.maps.SymbolPath.CIRCLE, scale: 4, strokeColor: 'black', fillColor: 'red', strokeWeight: 1, fillOpacity: 1 },
+      });
+      google.maps.event.addListener(markerAEY, 'click', function() {
+        infowindow.setContent('Akureyri, Iceland<br/><a href="/places/BIAR" target="_blank">More info</a>');
+        infowindow.open(map,markerAEY);
+      });
+
+      var markerIFJ = new google.maps.Marker({
+        position: {lat: 66.0581, lng: -23.1353 },
+        map: map,
+        title: "Ísafjörður, Iceland",
+        icon: { path: google.maps.SymbolPath.CIRCLE, scale: 4, strokeColor: 'black', fillColor: 'red', strokeWeight: 1, fillOpacity: 1 },
+      });
+      google.maps.event.addListener(markerIFJ, 'click', function() {
+        infowindow.setContent('Ísafjörður, Iceland<br/><a href="/places/BIIS" target="_blank">More info</a>');
+        infowindow.open(map,markerIFJ);
+      });
+
+      var markerYWM = new google.maps.Marker({
+        position: {lat: 52.5669, lng: -55.7847 },
+        map: map,
+        title: "Williams Harbour, Canada",
+        icon: { path: google.maps.SymbolPath.CIRCLE, scale: 4, strokeColor: 'black', fillColor: 'red', strokeWeight: 1, fillOpacity: 1 },
+      });
+      google.maps.event.addListener(markerYWM, 'click', function() {
+        infowindow.setContent('Williams Harbour, Canada<br/><a href="/places/CCA6" target="_blank">More info</a>');
+        infowindow.open(map,markerYWM);
+      });
+
+      var markerYFX = new google.maps.Marker({
+        position: {lat: 52.3728, lng: -55.6739 },
+        map: map,
+        title: "St. Lewis, Canada",
+        icon: { path: google.maps.SymbolPath.CIRCLE, scale: 4, strokeColor: 'black', fillColor: 'red', strokeWeight: 1, fillOpacity: 1 },
+      });
+      google.maps.event.addListener(markerYFX, 'click', function() {
+        infowindow.setContent('St. Lewis, Canada<br/><a href="/places/CCK4" target="_blank">More info</a>');
+        infowindow.open(map,markerYFX);
+      });
+
+      var markerYHA = new google.maps.Marker({
+        position: {lat: 52.5281, lng: -56.2861 },
+        map: map,
+        title: "Port Hope Simpson, Canada",
+        icon: { path: google.maps.SymbolPath.CIRCLE, scale: 4, strokeColor: 'black', fillColor: 'red', strokeWeight: 1, fillOpacity: 1 },
+      });
+      google.maps.event.addListener(markerYHA, 'click', function() {
+        infowindow.setContent('Port Hope Simpson, Canada<br/><a href="/places/CCP4" target="_blank">More info</a>');
+        infowindow.open(map,markerYHA);
+      });
+
+      var markerYRG = new google.maps.Marker({
+        position: {lat: 54.1797, lng: -58.4575 },
+        map: map,
+        title: "Rigolet, Canada",
+        icon: { path: google.maps.SymbolPath.CIRCLE, scale: 4, strokeColor: 'black', fillColor: 'red', strokeWeight: 1, fillOpacity: 1 },
+      });
+      google.maps.event.addListener(markerYRG, 'click', function() {
+        infowindow.setContent('Rigolet, Canada<br/><a href="/places/CCZ2" target="_blank">More info</a>');
+        infowindow.open(map,markerYRG);
+      });
+
+      var markerSUR = new google.maps.Marker({
+        position: {lat: 52.7086, lng: -88.5419 },
+        map: map,
+        title: "Summer Beaver, Canada",
+        icon: { path: google.maps.SymbolPath.CIRCLE, scale: 4, strokeColor: 'black', fillColor: 'red', strokeWeight: 1, fillOpacity: 1 },
+      });
+      google.maps.event.addListener(markerSUR, 'click', function() {
+        infowindow.setContent('Summer Beaver, Canada<br/><a href="/places/CJV7" target="_blank">More info</a>');
+        infowindow.open(map,markerSUR);
+      });
+
+      var markerWNN = new google.maps.Marker({
+        position: {lat: 52.8939, lng: -89.2892 },
+        map: map,
+        title: "Wunnumin Lake, Canada",
+        icon: { path: google.maps.SymbolPath.CIRCLE, scale: 4, strokeColor: 'black', fillColor: 'red', strokeWeight: 1, fillOpacity: 1 },
+      });
+      google.maps.event.addListener(markerWNN, 'click', function() {
+        infowindow.setContent('Wunnumin Lake, Canada<br/><a href="/places/CKL3" target="_blank">More info</a>');
+        infowindow.open(map,markerWNN);
+      });
+
+      var markerXBE = new google.maps.Marker({
+        position: {lat: 53.9656, lng: -91.0272 },
+        map: map,
+        title: "Bearskin Lake, Canada",
+        icon: { path: google.maps.SymbolPath.CIRCLE, scale: 4, strokeColor: 'black', fillColor: 'red', strokeWeight: 1, fillOpacity: 1 },
+      });
+      google.maps.event.addListener(markerXBE, 'click', function() {
+        infowindow.setContent('Bearskin Lake, Canada<br/><a href="/places/CNE3" target="_blank">More info</a>');
+        infowindow.open(map,markerXBE);
+      });
+
+      var markerKIF = new google.maps.Marker({
+        position: {lat: 53.0125, lng: -89.8553 },
+        map: map,
+        title: "Kingfisher Lake, Canada",
+        icon: { path: google.maps.SymbolPath.CIRCLE, scale: 4, strokeColor: 'black', fillColor: 'red', strokeWeight: 1, fillOpacity: 1 },
+      });
+      google.maps.event.addListener(markerKIF, 'click', function() {
+        infowindow.setContent('Kingfisher Lake, Canada<br/><a href="/places/CNM5" target="_blank">More info</a>');
+        infowindow.open(map,markerKIF);
+      });
+
+      var markerXKS = new google.maps.Marker({
+        position: {lat: 53.5247, lng: -88.6428 },
+        map: map,
+        title: "Kasabonika, Canada",
+        icon: { path: google.maps.SymbolPath.CIRCLE, scale: 4, strokeColor: 'black', fillColor: 'red', strokeWeight: 1, fillOpacity: 1 },
+      });
+      google.maps.event.addListener(markerXKS, 'click', function() {
+        infowindow.setContent('Kasabonika, Canada<br/><a href="/places/CYAQ" target="_blank">More info</a>');
+        infowindow.open(map,markerXKS);
+      });
+
+      var markerYBX = new google.maps.Marker({
+        position: {lat: 51.4436, lng: -57.1853 },
+        map: map,
+        title: "Lourdes-De-Blanc-Sablon, Canada",
+        icon: { path: google.maps.SymbolPath.CIRCLE, scale: 4, strokeColor: 'black', fillColor: 'red', strokeWeight: 1, fillOpacity: 1 },
+      });
+      google.maps.event.addListener(markerYBX, 'click', function() {
+        infowindow.setContent('Lourdes-De-Blanc-Sablon, Canada<br/><a href="/places/CYBX" target="_blank">More info</a>');
+        infowindow.open(map,markerYBX);
+      });
+
+      var markerYRF = new google.maps.Marker({
+        position: {lat: 53.6828, lng: -57.0419 },
+        map: map,
+        title: "Cartwright, Canada",
+        icon: { path: google.maps.SymbolPath.CIRCLE, scale: 4, strokeColor: 'black', fillColor: 'red', strokeWeight: 1, fillOpacity: 1 },
+      });
+      google.maps.event.addListener(markerYRF, 'click', function() {
+        infowindow.setContent('Cartwright, Canada<br/><a href="/places/CYCA" target="_blank">More info</a>');
+        infowindow.open(map,markerYRF);
+      });
+
+      var markerYDP = new google.maps.Marker({
+        position: {lat: 56.5492, lng: -61.6803 },
+        map: map,
+        title: "Nain, Canada",
+        icon: { path: google.maps.SymbolPath.CIRCLE, scale: 4, strokeColor: 'black', fillColor: 'red', strokeWeight: 1, fillOpacity: 1 },
+      });
+      google.maps.event.addListener(markerYDP, 'click', function() {
+        infowindow.setContent('Nain, Canada<br/><a href="/places/CYDP" target="_blank">More info</a>');
+        infowindow.open(map,markerYDP);
+      });
+
+      var markerYMN = new google.maps.Marker({
+        position: {lat: 55.0769, lng: -59.1864 },
+        map: map,
+        title: "Makkovik, Canada",
+        icon: { path: google.maps.SymbolPath.CIRCLE, scale: 4, strokeColor: 'black', fillColor: 'red', strokeWeight: 1, fillOpacity: 1 },
+      });
+      google.maps.event.addListener(markerYMN, 'click', function() {
+        infowindow.setContent('Makkovik, Canada<br/><a href="/places/CYFT" target="_blank">More info</a>');
+        infowindow.open(map,markerYMN);
+      });
+
+      var markerYGX = new google.maps.Marker({
+        position: {lat: 56.3575, lng: -94.7106 },
+        map: map,
+        title: "Gillam, Canada",
+        icon: { path: google.maps.SymbolPath.CIRCLE, scale: 4, strokeColor: 'black', fillColor: 'red', strokeWeight: 1, fillOpacity: 1 },
+      });
+      google.maps.event.addListener(markerYGX, 'click', function() {
+        infowindow.setContent('Gillam, Canada<br/><a href="/places/CYGX" target="_blank">More info</a>');
+        infowindow.open(map,markerYGX);
+      });
+
+      var markerYNS = new google.maps.Marker({
+        position: {lat: 51.6911, lng: -76.1356 },
+        map: map,
+        title: "Nemiscau, Canada",
+        icon: { path: google.maps.SymbolPath.CIRCLE, scale: 4, strokeColor: 'black', fillColor: 'red', strokeWeight: 1, fillOpacity: 1 },
+      });
+      google.maps.event.addListener(markerYNS, 'click', function() {
+        infowindow.setContent('Nemiscau, Canada<br/><a href="/places/CYHH" target="_blank">More info</a>');
+        infowindow.open(map,markerYNS);
+      });
+
+      var markerYHO = new google.maps.Marker({
+        position: {lat: 55.4483, lng: -60.2286 },
+        map: map,
+        title: "Hopedale, Canada",
+        icon: { path: google.maps.SymbolPath.CIRCLE, scale: 4, strokeColor: 'black', fillColor: 'red', strokeWeight: 1, fillOpacity: 1 },
+      });
+      google.maps.event.addListener(markerYHO, 'click', function() {
+        infowindow.setContent('Hopedale, Canada<br/><a href="/places/CYHO" target="_blank">More info</a>');
+        infowindow.open(map,markerYHO);
+      });
+
+      var markerYKL = new google.maps.Marker({
+        position: {lat: 54.8053, lng: -66.8053 },
+        map: map,
+        title: "Schefferville, Canada",
+        icon: { path: google.maps.SymbolPath.CIRCLE, scale: 4, strokeColor: 'black', fillColor: 'red', strokeWeight: 1, fillOpacity: 1 },
+      });
+      google.maps.event.addListener(markerYKL, 'click', function() {
+        infowindow.setContent('Schefferville, Canada<br/><a href="/places/CYKL" target="_blank">More info</a>');
+        infowindow.open(map,markerYKL);
+      });
+
+      var markerYKQ = new google.maps.Marker({
+        position: {lat: 51.4733, lng: -78.7583 },
+        map: map,
+        title: "Waskaganish, Canada",
+        icon: { path: google.maps.SymbolPath.CIRCLE, scale: 4, strokeColor: 'black', fillColor: 'red', strokeWeight: 1, fillOpacity: 1 },
+      });
+      google.maps.event.addListener(markerYKQ, 'click', function() {
+        infowindow.setContent('Waskaganish, Canada<br/><a href="/places/CYKQ" target="_blank">More info</a>');
+        infowindow.open(map,markerYKQ);
+      });
+
+      var markerYMH = new google.maps.Marker({
+        position: {lat: 52.3028, lng: -55.8472 },
+        map: map,
+        title: "Mary&#x27;s Harbour, Canada",
+        icon: { path: google.maps.SymbolPath.CIRCLE, scale: 4, strokeColor: 'black', fillColor: 'red', strokeWeight: 1, fillOpacity: 1 },
+      });
+      google.maps.event.addListener(markerYMH, 'click', function() {
+        infowindow.setContent('Mary&#x27;s Harbour, Canada<br/><a href="/places/CYMH" target="_blank">More info</a>');
+        infowindow.open(map,markerYMH);
+      });
+
+      var markerYMO = new google.maps.Marker({
+        position: {lat: 51.2911, lng: -80.6078 },
+        map: map,
+        title: "Moosonee, Canada",
+        icon: { path: google.maps.SymbolPath.CIRCLE, scale: 4, strokeColor: 'black', fillColor: 'red', strokeWeight: 1, fillOpacity: 1 },
+      });
+      google.maps.event.addListener(markerYMO, 'click', function() {
+        infowindow.setContent('Moosonee, Canada<br/><a href="/places/CYMO" target="_blank">More info</a>');
+        infowindow.open(map,markerYMO);
+      });
+
+      var markerYTH = new google.maps.Marker({
+        position: {lat: 55.8011, lng: -97.8642 },
+        map: map,
+        title: "Thompson, Canada",
+        icon: { path: google.maps.SymbolPath.CIRCLE, scale: 4, strokeColor: 'black', fillColor: 'red', strokeWeight: 1, fillOpacity: 1 },
+      });
+      google.maps.event.addListener(markerYTH, 'click', function() {
+        infowindow.setContent('Thompson, Canada<br/><a href="/places/CYTH" target="_blank">More info</a>');
+        infowindow.open(map,markerYTH);
+      });
+
+      var markerYTL = new google.maps.Marker({
+        position: {lat: 53.8178, lng: -89.8969 },
+        map: map,
+        title: "Big Trout Lake, Canada",
+        icon: { path: google.maps.SymbolPath.CIRCLE, scale: 4, strokeColor: 'black', fillColor: 'red', strokeWeight: 1, fillOpacity: 1 },
+      });
+      google.maps.event.addListener(markerYTL, 'click', function() {
+        infowindow.setContent('Big Trout Lake, Canada<br/><a href="/places/CYTL" target="_blank">More info</a>');
+        infowindow.open(map,markerYTL);
+      });
+
+      var markerYWK = new google.maps.Marker({
+        position: {lat: 52.9219, lng: -66.8644 },
+        map: map,
+        title: "Wabush, Canada",
+        icon: { path: google.maps.SymbolPath.CIRCLE, scale: 4, strokeColor: 'black', fillColor: 'red', strokeWeight: 1, fillOpacity: 1 },
+      });
+      google.maps.event.addListener(markerYWK, 'click', function() {
+        infowindow.setContent('Wabush, Canada<br/><a href="/places/CYWK" target="_blank">More info</a>');
+        infowindow.open(map,markerYWK);
+      });
+
+      var markerYWP = new google.maps.Marker({
+        position: {lat: 52.95939, lng: -87.37487 },
+        map: map,
+        title: "Webequie, Canada",
+        icon: { path: google.maps.SymbolPath.CIRCLE, scale: 4, strokeColor: 'black', fillColor: 'red', strokeWeight: 1, fillOpacity: 1 },
+      });
+      google.maps.event.addListener(markerYWP, 'click', function() {
+        infowindow.setContent('Webequie, Canada<br/><a href="/places/CYWP" target="_blank">More info</a>');
+        infowindow.open(map,markerYWP);
+      });
+
+      var markerYYL = new google.maps.Marker({
+        position: {lat: 56.8639, lng: -101.076 },
+        map: map,
+        title: "Lynn Lake, Canada",
+        icon: { path: google.maps.SymbolPath.CIRCLE, scale: 4, strokeColor: 'black', fillColor: 'red', strokeWeight: 1, fillOpacity: 1 },
+      });
+      google.maps.event.addListener(markerYYL, 'click', function() {
+        infowindow.setContent('Lynn Lake, Canada<br/><a href="/places/CYYL" target="_blank">More info</a>');
+        infowindow.open(map,markerYYL);
+      });
+
+      var markerYYR = new google.maps.Marker({
+        position: {lat: 53.3192, lng: -60.4258 },
+        map: map,
+        title: "Goose Bay, Canada",
+        icon: { path: google.maps.SymbolPath.CIRCLE, scale: 4, strokeColor: 'black', fillColor: 'red', strokeWeight: 1, fillOpacity: 1 },
+      });
+      google.maps.event.addListener(markerYYR, 'click', function() {
+        infowindow.setContent('Goose Bay, Canada<br/><a href="/places/CYYR" target="_blank">More info</a>');
+        infowindow.open(map,markerYYR);
+      });
+
+      var markerZAC = new google.maps.Marker({
+        position: {lat: 56.0894, lng: -96.0892 },
+        map: map,
+        title: "York Landing, Canada",
+        icon: { path: google.maps.SymbolPath.CIRCLE, scale: 4, strokeColor: 'black', fillColor: 'red', strokeWeight: 1, fillOpacity: 1 },
+      });
+      google.maps.event.addListener(markerZAC, 'click', function() {
+        infowindow.setContent('York Landing, Canada<br/><a href="/places/CZAC" target="_blank">More info</a>');
+        infowindow.open(map,markerZAC);
+      });
+
+      var markerZEM = new google.maps.Marker({
+        position: {lat: 52.2264, lng: -78.5225 },
+        map: map,
+        title: "Eastmain River, Canada",
+        icon: { path: google.maps.SymbolPath.CIRCLE, scale: 4, strokeColor: 'black', fillColor: 'red', strokeWeight: 1, fillOpacity: 1 },
+      });
+      google.maps.event.addListener(markerZEM, 'click', function() {
+        infowindow.setContent('Eastmain River, Canada<br/><a href="/places/CZEM" target="_blank">More info</a>');
+        infowindow.open(map,markerZEM);
+      });
+
+      var markerZGI = new google.maps.Marker({
+        position: {lat: 54.8397, lng: -94.0786 },
+        map: map,
+        title: "Gods River, Canada",
+        icon: { path: google.maps.SymbolPath.CIRCLE, scale: 4, strokeColor: 'black', fillColor: 'red', strokeWeight: 1, fillOpacity: 1 },
+      });
+      google.maps.event.addListener(markerZGI, 'click', function() {
+        infowindow.setContent('Gods River, Canada<br/><a href="/places/CZGI" target="_blank">More info</a>');
+        infowindow.open(map,markerZGI);
+      });
+
+      var markerZUM = new google.maps.Marker({
+        position: {lat: 53.5619, lng: -64.1064 },
+        map: map,
+        title: "Churchill Falls, Canada",
+        icon: { path: google.maps.SymbolPath.CIRCLE, scale: 4, strokeColor: 'black', fillColor: 'red', strokeWeight: 1, fillOpacity: 1 },
+      });
+      google.maps.event.addListener(markerZUM, 'click', function() {
+        infowindow.setContent('Churchill Falls, Canada<br/><a href="/places/CZUM" target="_blank">More info</a>');
+        infowindow.open(map,markerZUM);
+      });
+
+      var markerKAO = new google.maps.Marker({
+        position: {lat: 65.9876, lng: 29.2394 },
+        map: map,
+        title: "Kuusamo, Finland",
+        icon: { path: google.maps.SymbolPath.CIRCLE, scale: 4, strokeColor: 'black', fillColor: 'red', strokeWeight: 1, fillOpacity: 1 },
+      });
+      google.maps.event.addListener(markerKAO, 'click', function() {
+        infowindow.setContent('Kuusamo, Finland<br/><a href="/places/EFKS" target="_blank">More info</a>');
+        infowindow.open(map,markerKAO);
+      });
+
+      var markerHFT = new google.maps.Marker({
+        position: {lat: 70.6797, lng: 23.6686 },
+        map: map,
+        title: "Hammerfest, Norway",
+        icon: { path: google.maps.SymbolPath.CIRCLE, scale: 4, strokeColor: 'black', fillColor: 'red', strokeWeight: 1, fillOpacity: 1 },
+      });
+      google.maps.event.addListener(markerHFT, 'click', function() {
+        infowindow.setContent('Hammerfest, Norway<br/><a href="/places/ENHF" target="_blank">More info</a>');
+        infowindow.open(map,markerHFT);
+      });
+
+      var markerHAA = new google.maps.Marker({
+        position: {lat: 70.4867, lng: 22.1397 },
+        map: map,
+        title: "Hasvik, Norway",
+        icon: { path: google.maps.SymbolPath.CIRCLE, scale: 4, strokeColor: 'black', fillColor: 'red', strokeWeight: 1, fillOpacity: 1 },
+      });
+      google.maps.event.addListener(markerHAA, 'click', function() {
+        infowindow.setContent('Hasvik, Norway<br/><a href="/places/ENHK" target="_blank">More info</a>');
+        infowindow.open(map,markerHAA);
+      });
+
+      var markerHVG = new google.maps.Marker({
+        position: {lat: 71.0097, lng: 25.9836 },
+        map: map,
+        title: "Honningsvåg, Norway",
+        icon: { path: google.maps.SymbolPath.CIRCLE, scale: 4, strokeColor: 'black', fillColor: 'red', strokeWeight: 1, fillOpacity: 1 },
+      });
+      google.maps.event.addListener(markerHVG, 'click', function() {
+        infowindow.setContent('Honningsvåg, Norway<br/><a href="/places/ENHV" target="_blank">More info</a>');
+        infowindow.open(map,markerHVG);
+      });
+
+      var markerSOJ = new google.maps.Marker({
+        position: {lat: 69.7868, lng: 20.9594 },
+        map: map,
+        title: "Sørkjosen, Norway",
+        icon: { path: google.maps.SymbolPath.CIRCLE, scale: 4, strokeColor: 'black', fillColor: 'red', strokeWeight: 1, fillOpacity: 1 },
+      });
+      google.maps.event.addListener(markerSOJ, 'click', function() {
+        infowindow.setContent('Sørkjosen, Norway<br/><a href="/places/ENSR" target="_blank">More info</a>');
+        infowindow.open(map,markerSOJ);
+      });
+
+      var markerJAC = new google.maps.Marker({
+        position: {lat: 43.6073, lng: -110.738 },
+        map: map,
+        title: "Jackson, United States",
+        icon: { path: google.maps.SymbolPath.CIRCLE, scale: 4, strokeColor: 'black', fillColor: 'red', strokeWeight: 1, fillOpacity: 1 },
+      });
+      google.maps.event.addListener(markerJAC, 'click', function() {
+        infowindow.setContent('Jackson, United States<br/><a href="/places/KJAC" target="_blank">More info</a>');
+        infowindow.open(map,markerJAC);
+      });
+
+      var markerING = new google.maps.Marker({
+        position: {lat: -50.3361, lng: -72.2486 },
+        map: map,
+        title: "El Calafate, Argentina",
+        icon: { path: google.maps.SymbolPath.CIRCLE, scale: 4, strokeColor: 'black', fillColor: 'red', strokeWeight: 1, fillOpacity: 1 },
+      });
+      google.maps.event.addListener(markerING, 'click', function() {
+        infowindow.setContent('El Calafate, Argentina<br/><a href="/places/SAWA" target="_blank">More info</a>');
+        infowindow.open(map,markerING);
+      });
+
+      var markerUSH = new google.maps.Marker({
+        position: {lat: -54.8433, lng: -68.2958 },
+        map: map,
+        title: "Ushuahia, Argentina",
+        icon: { path: google.maps.SymbolPath.CIRCLE, scale: 4, strokeColor: 'black', fillColor: 'red', strokeWeight: 1, fillOpacity: 1 },
+      });
+      google.maps.event.addListener(markerUSH, 'click', function() {
+        infowindow.setContent('Ushuahia, Argentina<br/><a href="/places/SAWH" target="_blank">More info</a>');
+        infowindow.open(map,markerUSH);
+      });
+
+      var markerBBA = new google.maps.Marker({
+        position: {lat: -45.9161, lng: -71.6895 },
+        map: map,
+        title: "Balmaceda, Chile",
+        icon: { path: google.maps.SymbolPath.CIRCLE, scale: 4, strokeColor: 'black', fillColor: 'red', strokeWeight: 1, fillOpacity: 1 },
+      });
+      google.maps.event.addListener(markerBBA, 'click', function() {
+        infowindow.setContent('Balmaceda, Chile<br/><a href="/places/SCBA" target="_blank">More info</a>');
+        infowindow.open(map,markerBBA);
+      });
+
+      var markerCNN = new google.maps.Marker({
+        position: {lat: 56.9139, lng: 124.914 },
+        map: map,
+        title: "Chulman, Russia",
+        icon: { path: google.maps.SymbolPath.CIRCLE, scale: 4, strokeColor: 'black', fillColor: 'red', strokeWeight: 1, fillOpacity: 1 },
+      });
+      google.maps.event.addListener(markerCNN, 'click', function() {
+        infowindow.setContent('Chulman, Russia<br/><a href="/places/UELL" target="_blank">More info</a>');
+        infowindow.open(map,markerCNN);
+      });
+
+      var markerGDX = new google.maps.Marker({
+        position: {lat: 59.911, lng: 150.72 },
+        map: map,
+        title: "Magadan, Russia",
+        icon: { path: google.maps.SymbolPath.CIRCLE, scale: 4, strokeColor: 'black', fillColor: 'red', strokeWeight: 1, fillOpacity: 1 },
+      });
+      google.maps.event.addListener(markerGDX, 'click', function() {
+        infowindow.setContent('Magadan, Russia<br/><a href="/places/UHMM" target="_blank">More info</a>');
+        infowindow.open(map,markerGDX);
+      });
+
+      var markerOHO = new google.maps.Marker({
+        position: {lat: 59.41006, lng: 143.0565 },
+        map: map,
+        title: "Okhotsk, Russia",
+        icon: { path: google.maps.SymbolPath.CIRCLE, scale: 4, strokeColor: 'black', fillColor: 'red', strokeWeight: 1, fillOpacity: 1 },
+      });
+      google.maps.event.addListener(markerOHO, 'click', function() {
+        infowindow.setContent('Okhotsk, Russia<br/><a href="/places/UHOO" target="_blank">More info</a>');
+        infowindow.open(map,markerOHO);
+      });
+
+      var markerEYK = new google.maps.Marker({
+        position: {lat: 63.6869, lng: 66.6986 },
+        map: map,
+        title: "Beloyarskiy, Russia",
+        icon: { path: google.maps.SymbolPath.CIRCLE, scale: 4, strokeColor: 'black', fillColor: 'red', strokeWeight: 1, fillOpacity: 1 },
+      });
+      google.maps.event.addListener(markerEYK, 'click', function() {
+        infowindow.setContent('Beloyarskiy, Russia<br/><a href="/places/USHY" target="_blank">More info</a>');
+        infowindow.open(map,markerEYK);
+      });
+
+      var markerNJC = new google.maps.Marker({
+        position: {lat: 60.9493, lng: 76.4836 },
+        map: map,
+        title: "Nizhnevartovsk, Russia",
+        icon: { path: google.maps.SymbolPath.CIRCLE, scale: 4, strokeColor: 'black', fillColor: 'red', strokeWeight: 1, fillOpacity: 1 },
+      });
+      google.maps.event.addListener(markerNJC, 'click', function() {
+        infowindow.setContent('Nizhnevartovsk, Russia<br/><a href="/places/USNN" target="_blank">More info</a>');
+        infowindow.open(map,markerNJC);
+      });
+
+      var markerKGP = new google.maps.Marker({
+        position: {lat: 62.1904, lng: 74.5338 },
+        map: map,
+        title: "Kogalym, Russia",
+        icon: { path: google.maps.SymbolPath.CIRCLE, scale: 4, strokeColor: 'black', fillColor: 'red', strokeWeight: 1, fillOpacity: 1 },
+      });
+      google.maps.event.addListener(markerKGP, 'click', function() {
+        infowindow.setContent('Kogalym, Russia<br/><a href="/places/USRK" target="_blank">More info</a>');
+        infowindow.open(map,markerKGP);
+      });
+
+      var markerNOJ = new google.maps.Marker({
+        position: {lat: 63.1833, lng: 75.27 },
+        map: map,
+        title: "Noyabrsk, Russia",
+        icon: { path: google.maps.SymbolPath.CIRCLE, scale: 4, strokeColor: 'black', fillColor: 'red', strokeWeight: 1, fillOpacity: 1 },
+      });
+      google.maps.event.addListener(markerNOJ, 'click', function() {
+        infowindow.setContent('Noyabrsk, Russia<br/><a href="/places/USRO" target="_blank">More info</a>');
+        infowindow.open(map,markerNOJ);
+      });
+
+      var markerSGC = new google.maps.Marker({
+        position: {lat: 61.3437, lng: 73.4018 },
+        map: map,
+        title: "Surgut, Russia",
+        icon: { path: google.maps.SymbolPath.CIRCLE, scale: 4, strokeColor: 'black', fillColor: 'red', strokeWeight: 1, fillOpacity: 1 },
+      });
+      google.maps.event.addListener(markerSGC, 'click', function() {
+        infowindow.setContent('Surgut, Russia<br/><a href="/places/USRR" target="_blank">More info</a>');
+        infowindow.open(map,markerSGC);
+      });
+
+      var markerPEX = new google.maps.Marker({
+        position: {lat: 65.1211, lng: 57.1308 },
+        map: map,
+        title: "Pechora, Russia",
+        icon: { path: google.maps.SymbolPath.CIRCLE, scale: 4, strokeColor: 'black', fillColor: 'red', strokeWeight: 1, fillOpacity: 1 },
+      });
+      google.maps.event.addListener(markerPEX, 'click', function() {
+        infowindow.setContent('Pechora, Russia<br/><a href="/places/UUYP" target="_blank">More info</a>');
+        infowindow.open(map,markerPEX);
+      });
+
+      var markerBPX = new google.maps.Marker({
+        position: {lat: 30.5536, lng: 97.1083 },
+        map: map,
+        title: "Bangda, China",
+        icon: { path: google.maps.SymbolPath.CIRCLE, scale: 4, strokeColor: 'black', fillColor: 'red', strokeWeight: 1, fillOpacity: 1 },
+      });
+      google.maps.event.addListener(markerBPX, 'click', function() {
+        infowindow.setContent('Bangda, China<br/><a href="/places/ZUBD" target="_blank">More info</a>');
+        infowindow.open(map,markerBPX);
+      });
+
+
+        infowindow.setContent('Select a location for more information.');
+        infowindow.open(map,markerJFR);
+
+  }
+</script>

@@ -1,10 +1,14 @@
 import math
 from datetime import datetime
+from random import choice
 
 from django.core.cache import cache
 from django.http import JsonResponse, HttpResponse
 
-
+from .data.cool import cool
+from .data.hot_sunny import hot_sunny
+from .data.snow import snow
+from .data.warm_pleasant import warm_pleasant
 
 def gps_from_location(location):
     from geopy.geocoders import Nominatim
@@ -38,7 +42,16 @@ def parse_command(request):
         if cache.get('page_state', 'intro') == 'intro':
             cache.set('page_state', 'map')
     elif command_type == 'weather':
-        cache.set('location', (46.557462, 15.645982))
+        if command_value in ['hot', 'sunny']:
+            command_value = choice(hot_sunny)
+        elif command_value in ['cool', 'humid', 'rain', 'rainy', 'thunderstorm']:
+            command_value = choice(cool)
+        elif command_value in ['snow', 'cold', 'freezing']:
+            command_value = choice(snow)
+        else:
+            command_value = choice(warm_pleasant)
+
+        cache.set('location', gps_from_location(command_value))
         send_location_to_arduino()
         if cache.get('page_state', 'intro') == 'intro':
             cache.set('page_state', 'map')
@@ -64,6 +77,7 @@ def parse_command(request):
 
     return JsonResponse({
         'message': 'Successfully received command {}'.format(command_type),
+        'value': command_value,
         'success': True
     })
 

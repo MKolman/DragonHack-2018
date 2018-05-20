@@ -43,7 +43,7 @@ def parse_command(request):
         if cache.get('page_state', 'intro') == 'intro':
             cache.set('page_state', 'map')
     elif command_type == 'move':
-        lat, lon = cache.get('location', (46.557462, 15.645982))
+        lat, lon = cache.get('location') or (46.557462, 15.645982)
         zoom = cache.get('zoom_level', 10)
         if command_value == 'north':
             lat += 400 / 2**zoom
@@ -98,9 +98,12 @@ def arduino(request):
 
 
 def send_location_to_arduino():
-    if cache.get('location', None) is None or cache.get('arduino_ip', '193.2.178.222') is None:
-        return
-    from urllib import request
-    lat, lon = cache.get('location', None)
-    lat, lon = int(lat), int(lon)
-    request.urlopen('http://{}/body?lat={}&lon={}'.format(cache.get('arduino_ip'), lat, lon), timeout=1)
+    try:
+        if cache.get('location', None) is None or cache.get('arduino_ip', '193.2.178.222') is None:
+            return
+        from urllib import request
+        lat, lon = cache.get('location', None)
+        lat, lon = int(lat), int(lon)
+        request.urlopen('http://{}/body?lat={}&lon={}'.format(cache.get('arduino_ip'), lat, lon), timeout=1)
+    except:
+        pass

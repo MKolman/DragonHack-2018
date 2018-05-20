@@ -3,6 +3,7 @@ html {
 }
 
 body.vr {
+  background: #7ab6fb;
   width: 100%;
   height: 100%;
   perspective: 1000px;

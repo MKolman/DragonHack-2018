@@ -89,6 +89,13 @@
             "Go into VR mode"
           ],
           "slots": []
+        },
+        {
+          "name": "PitchIntent",
+          "samples": [
+            "Help me with the pitch"
+          ],
+          "slots": []
         }
       ],
       "types": [{

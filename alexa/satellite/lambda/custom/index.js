@@ -176,6 +176,23 @@ const VRIntentHandler = {
   },
 };
 
+const PitchIntentHandler = {
+  canHandle(handlerInput) {
+    return handlerInput.requestEnvelope.request.type === 'IntentRequest' &&
+      handlerInput.requestEnvelope.request.intent.name === 'PitchIntent';
+  },
+  async handle(handlerInput) {
+    let speechText = `I can help people find interesting locations depending on their country and climate preferences. One can switch map types, move around the map and also look at the map in VR.`;
+
+    return handlerInput.responseBuilder
+      .speak(speechText)
+      .reprompt(repromptText)
+      .withSimpleCard('Move', speechText)
+      .withShouldEndSession(false)
+      .getResponse();
+  },
+};
+
 const HelpIntentHandler = {
   canHandle(handlerInput) {
     return handlerInput.requestEnvelope.request.type === 'IntentRequest' &&
@@ -287,6 +304,7 @@ exports.handler = skillBuilder
     ZoomIntentHandler,
     MapTypeIntentHandler,
     VRIntentHandler,
+    PitchIntentHandler,
     HelpIntentHandler,
     CancelAndStopIntentHandler,
     SessionEndedRequestHandler

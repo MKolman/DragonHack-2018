@@ -4,16 +4,16 @@
 const Alexa = require('ask-sdk-core');
 const rp = require('request-promise-native');
 
+const api = 'http://dragon.kolman.si/alexa/command';
+
 const LaunchRequestHandler = {
   canHandle(handlerInput) {
     return handlerInput.requestEnvelope.request.type === 'LaunchRequest';
   },
   async handle(handlerInput) {
-    // const response = await rp('http://google.com');
+    const response = await rp(`${api}?type=init`);
 
-    // console.log(response);
-
-    const speechText = 'Welcome to the Travel! Where do you want me to take you?';
+    const speechText = 'Around the World in 80 seconds! Where do you want me to take you?';
 
     return handlerInput.responseBuilder
       .speak(speechText)
@@ -36,10 +36,13 @@ const FindLocationIntentHandler = {
     const weather = slotValues.weather ? slotValues.weather.resolved : null;
 
     let speechText = 'You did not specify anything specific.';
-    if (country)
+    if (country) {
       speechText = `You'd like to visit ${country}.`;
-    else if (weather)
+      const response = await rp(`${api}?type=location&value=${country}`);
+    } else if (weather) {
       speechText = `You like ${weather} weather.`;
+      const response = await rp(`${api}?type=weather&value=${weather}`);
+    }
 
     return handlerInput.responseBuilder
       .speak(speechText)
@@ -76,9 +79,90 @@ const MoveIntentHandler = {
       index = index % moveResponses.length;
       speechText = moveResponses[index];
 
+      const response = await rp(`${api}?type=move&value=${direction}`);
+
       sessionAttributes.currentMoveResponse = index;
       await handlerInput.attributesManager.setSessionAttributes(sessionAttributes);
     }
+
+    return handlerInput.responseBuilder
+      .speak(speechText)
+      .reprompt(speechText)
+      .withSimpleCard('Move', speechText)
+      .withShouldEndSession(false)
+      .getResponse();
+  },
+};
+
+const ZoomIntentHandler = {
+  canHandle(handlerInput) {
+    return handlerInput.requestEnvelope.request.type === 'IntentRequest' &&
+      handlerInput.requestEnvelope.request.intent.name === 'ZoomIntent';
+  },
+  async handle(handlerInput) {
+    const filledSlots = handlerInput.requestEnvelope.request.intent.slots;
+    const slotValues = getSlotValues(filledSlots);
+
+    const zoom = slotValues.zoom ? slotValues.zoom.resolved : null;
+
+    let sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
+
+    let speechText = '';
+    if (zoom) {
+      let index = typeof sessionAttributes.currentMoveResponse !== 'undefined' ? sessionAttributes.currentMoveResponse + 1 : 0;
+
+      index = index % moveResponses.length;
+      speechText = moveResponses[index];
+
+      const zoomValue = zoom == 'in' ? 1 : -1;
+      const response = await rp(`${api}?type=zoom&value=${zoomValue}`);
+
+      sessionAttributes.currentMoveResponse = index;
+      await handlerInput.attributesManager.setSessionAttributes(sessionAttributes);
+    }
+
+    return handlerInput.responseBuilder
+      .speak(speechText)
+      .reprompt(speechText)
+      .withSimpleCard('Move', speechText)
+      .withShouldEndSession(false)
+      .getResponse();
+  },
+};
+
+const MapTypeIntentHandler = {
+  canHandle(handlerInput) {
+    return handlerInput.requestEnvelope.request.type === 'IntentRequest' &&
+      handlerInput.requestEnvelope.request.intent.name === 'MapTypeIntent';
+  },
+  async handle(handlerInput) {
+    const filledSlots = handlerInput.requestEnvelope.request.intent.slots;
+    const slotValues = getSlotValues(filledSlots);
+
+    const map = slotValues.map ? slotValues.map.resolved : null;
+
+    let speechText = `Changing to ${map} map`;
+
+    const response = await rp(`${api}?type=change_type&value=${map}`);
+
+    return handlerInput.responseBuilder
+      .speak(speechText)
+      .reprompt(speechText)
+      .withSimpleCard('Move', speechText)
+      .withShouldEndSession(false)
+      .getResponse();
+  },
+};
+
+const VRIntentHandler = {
+  canHandle(handlerInput) {
+    return handlerInput.requestEnvelope.request.type === 'IntentRequest' &&
+      handlerInput.requestEnvelope.request.intent.name === 'VRIntent';
+  },
+  async handle(handlerInput) {
+    let speechText = `Switching to VR`;
+
+    const response = await rp(`${api}?type=vr`);
 
     return handlerInput.responseBuilder
       .speak(speechText)
@@ -125,7 +209,9 @@ const SessionEndedRequestHandler = {
   canHandle(handlerInput) {
     return handlerInput.requestEnvelope.request.type === 'SessionEndedRequest';
   },
-  handle(handlerInput) {
+  async handle(handlerInput) {
+    const response = await rp(`${api}?type=reset`);
+
     console.log(`Session ended with reason: ${handlerInput.requestEnvelope.request.reason}`);
 
     return handlerInput.responseBuilder.getResponse();
@@ -195,6 +281,9 @@ exports.handler = skillBuilder
     LaunchRequestHandler,
     FindLocationIntentHandler,
     MoveIntentHandler,
+    ZoomIntentHandler,
+    MapTypeIntentHandler,
+    VRIntentHandler,
     HelpIntentHandler,
     CancelAndStopIntentHandler,
     SessionEndedRequestHandler

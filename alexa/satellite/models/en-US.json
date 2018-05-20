@@ -51,6 +51,40 @@
             "name": "direction",
             "type": "LIST_OF_DIRECTIONS"
           }]
+        },
+        {
+          "name": "ZoomIntent",
+          "samples": [
+            "zoom {zoom}",
+            "zoom {zoom}",
+            "make it {zoom}",
+            "make it {zoom}"
+          ],
+          "slots": [{
+            "name": "zoom",
+            "type": "LIST_OF_ZOOM_LEVELS"
+          }]
+        },
+        {
+          "name": "MapTypeIntent",
+          "samples": [
+            "Can you show me the {map} map",
+            "Display {map} map",
+            "I would like to see {map} map",
+            "I would rather see {map} map"
+          ],
+          "slots": [{
+            "name": "map",
+            "type": "LIST_OF_MAP_TYPES"
+          }]
+        },
+        {
+          "name": "VRIntent",
+          "samples": [
+            "I would like to see this in VR",
+            "Show me in VR"
+          ],
+          "slots": []
         }
       ],
       "types": [{
@@ -89,6 +123,40 @@
               "name": {
                 "value": "out",
                 "synonyms": ["smaller"]
+              }
+            }
+          ]
+        },
+        {
+          "name": "LIST_OF_MAP_TYPES",
+          "values": [{
+              "name": {
+                "value": "default",
+                "synonyms": ["natural"]
+              }
+            },
+            {
+              "name": {
+                "value": "agriculture",
+                "synonyms": []
+              }
+            },
+            {
+              "name": {
+                "value": "vegetation",
+                "synonyms": []
+              }
+            },
+            {
+              "name": {
+                "value": "urban",
+                "synonyms": []
+              }
+            },
+            {
+              "name": {
+                "value": "moisture",
+                "synonyms": []
               }
             }
           ]

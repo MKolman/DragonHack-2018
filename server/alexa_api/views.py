@@ -38,14 +38,15 @@ def parse_command(request):
         cache.set('page_state', 'map')
     elif command_type == 'move':
         lat, lon = cache.get('location', (46.557462, 15.645982))
+        zoom = cache.get('zoom_level', 10)
         if command_value == 'north':
-            lat += 1
+            lat += 400 / 2**zoom
         elif command_value == 'south':
-            lat -= 1
+            lat -= 400 / 2**zoom
         elif command_value == 'east':
-            lon += 1.0/math.cos(lat)
+            lon += 400.0/math.cos(lat)/2**zoom
         elif command_value == 'west':
-            lon -= 1.0/math.cos(lat)
+            lon -= 400.0/math.cos(lat)/2**zoom
         cache.set('location', (lat, lon))
     elif command_type == 'zoom':
         cache.set('zoom_level', cache.get('zoom_level', 10)+int(command_value))

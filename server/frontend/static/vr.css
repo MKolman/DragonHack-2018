@@ -9,8 +9,10 @@ body.vr {
 }
 
 #themap, #themapvr {
-  width: 100%;
-  height: 100%;
+  width: 300%;
+  height: 200%;
+  margin-top: -50vh;
+  margin-left: -50vw;
 }
 .halfpage {
   position: relative;

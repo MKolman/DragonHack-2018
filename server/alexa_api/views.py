@@ -13,7 +13,12 @@ def parse_command(request):
 
     command_type = data.get('type')
     command_value = data.get('value')
-    if command_type == 'init':
+    if command_type == 'reset':
+        cache.set('page_state', None)
+        cache.set('location', None)
+        cache.set('zoom_level', 10)
+        cache.set('map_type', 'default')
+    elif command_type == 'init':
         cache.set('page_state', 'intro')
         cache.set('zoom_level', 10)
     elif command_type == 'location':

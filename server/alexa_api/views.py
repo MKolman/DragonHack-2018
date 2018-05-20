@@ -52,6 +52,8 @@ def parse_command(request):
         cache.set('zoom_level', cache.get('zoom_level', 10)+int(command_value))
     elif command_type == 'change_type':
         cache.set('map_type', command_value)
+    elif command_type == 'vr':
+        cache.set('page_state', 'vr')
 
     return JsonResponse({
         'message': 'Successfully received command {}'.format(command_type),

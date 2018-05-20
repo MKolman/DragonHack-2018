@@ -106,7 +106,7 @@ var App = {
       App.rotZ = data.z;
       App.setRotate();
 
-      window.setTimeout(App.fetchOrientation, 100);
+      window.setTimeout(App.fetchOrientation, 10);
     });
   },
 

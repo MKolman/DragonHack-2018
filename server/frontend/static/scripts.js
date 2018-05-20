@@ -1,7 +1,7 @@
 var App = {
   state: {
     location: null,
-    map_type: 'default',
+    map_type: 'TRUE_COLOR',
     page_state: null,
     zoom_level: 10
   },
@@ -29,12 +29,23 @@ var App = {
   },
 
   updateMapType: function(map_type) {
-    if (map_type == App.state.map_type)
+    var map_id = 'TRUE_COLOR';
+    if (map_type == 'agriculture') {
+      map_id = 'AGRICULTURE';
+    } else if (map_type == 'vegetation') {
+      map_id = 'FALSE_COLOR';
+    } else if (map_type == 'urban') {
+      map_id = 'FALSE_COLOR_URBAN';
+    } else if (map_type == 'moisture') {
+      map_id == 'MOISTURE';
+    }
+
+    if (map_id == App.state.map_type)
       return;
 
-    App.state.map_type = map_type;
+    App.state.map_type = map_id;
 
-    Map.changeMap(map_type);
+    Map.changeMap(map_id);
   },
 
   updatePageState: function(page_state) {
@@ -116,8 +127,8 @@ var Map = {
       maxcc: 20,
       minZoom: 6,
       maxZoom: 16,
-      preset: "TRUE_COLOR",
-      layers: "TRUE_COLOR",
+      preset: App.state.map_type,
+      layers: App.state.map_type,
       time: "2015-01-01/2018-05-19",
     });
   },
@@ -134,18 +145,18 @@ var Map = {
     }
   },
 
-  changeMap: function(map) {
+  changeMap: function(map_id) {
     if (Map.layerLeft) {
       Map.layerLeft.setParams({
-        preset: "FALSE_COLOR",
-        layers: "FALSE_COLOR"
+        preset: map_id,
+        layers: map_id
       }, false);
     }
 
     if (Map.layerRight) {
       Map.layerRight.setParams({
-        preset: "FALSE_COLOR",
-        layers: "FALSE_COLOR"
+        preset: map_id,
+        layers: map_id
       }, false);
     }
   },
@@ -162,11 +173,16 @@ var Map = {
 }
 
 $(document).ready(function() {
+  if ($('body').hasClass('vr'))
+    App.state.page_state = 'vr';
+
   App.getState();
 
   // VR
   if (!$('body').hasClass('vr')) return;
 
-  Map.init();
-  Map.initVR();
+  window.setTimeout(function() {
+    Map.init();
+    Map.initVR();
+  }, 200);
 });

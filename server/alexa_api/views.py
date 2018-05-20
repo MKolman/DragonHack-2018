@@ -32,10 +32,12 @@ def parse_command(request):
         cache.set('zoom_level', 10)
     elif command_type == 'location':
         cache.set('location', gps_from_location(command_value))
-        cache.set('page_state', 'map')
+        if cache.get('page_state', 'intro') == 'intro':
+            cache.set('page_state', 'map')
     elif command_type == 'weather':
         cache.set('location', (46.557462, 15.645982))
-        cache.set('page_state', 'map')
+        if cache.get('page_state', 'intro') == 'intro':
+            cache.set('page_state', 'map')
     elif command_type == 'move':
         lat, lon = cache.get('location', (46.557462, 15.645982))
         zoom = cache.get('zoom_level', 10)

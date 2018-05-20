@@ -3,12 +3,12 @@ server {
     listen 80;
     server_name dragon.pyphy.si;
 
+    location /static/ {
+        autoindex on;
+        root   /home/web/DragonHack-2018/server/;
+    }
     location / {
         include proxy_params;
         proxy_pass http://unix:/home/web/DragonHack-2018/server/myproject.sock;
-    }
-    location ^/static/ {
-        autoindex on;
-        root   /home/web/DragonHack-2018/server/static/;
     }
 }

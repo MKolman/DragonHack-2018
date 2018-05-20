@@ -6,6 +6,8 @@ const rp = require('request-promise-native');
 
 const api = 'http://dragon.kolman.si/alexa/command';
 
+let repromptText = 'Are you sattisfied with the choice?';
+
 const LaunchRequestHandler = {
   canHandle(handlerInput) {
     return handlerInput.requestEnvelope.request.type === 'LaunchRequest';
@@ -13,7 +15,7 @@ const LaunchRequestHandler = {
   async handle(handlerInput) {
     const response = await rp(`${api}?type=init`);
 
-    const speechText = 'Around the World in 80 seconds! Where do you want me to take you?';
+    const speechText = 'Go around the world in 80 seconds! Where do you want to go?';
 
     return handlerInput.responseBuilder
       .speak(speechText)
@@ -37,16 +39,17 @@ const FindLocationIntentHandler = {
 
     let speechText = 'You did not specify anything specific.';
     if (country) {
-      speechText = `You'd like to visit ${country}.`;
       const response = await rp(`${api}?type=location&value=${country}`);
+      speechText = `You'd like to visit ${country}.`;
     } else if (weather) {
-      speechText = `You like ${weather} weather.`;
       const response = await rp(`${api}?type=weather&value=${weather}`);
+      let loc = JSON.parse(response).value;
+      speechText = `I recommend you to visit ${loc}.`;
     }
 
     return handlerInput.responseBuilder
       .speak(speechText)
-      .reprompt(speechText)
+      .reprompt(repromptText)
       .withSimpleCard('Find location', speechText)
       .getResponse();
   },
@@ -55,8 +58,8 @@ const FindLocationIntentHandler = {
 const moveResponses = [
   'how about this?',
   'is it better?',
-  'yes, sir!',
-  'moving..'
+  'yes sir!',
+  'moving...'
 ]
 
 const MoveIntentHandler = {
@@ -87,7 +90,7 @@ const MoveIntentHandler = {
 
     return handlerInput.responseBuilder
       .speak(speechText)
-      .reprompt(speechText)
+      .reprompt(repromptText)
       .withSimpleCard('Move', speechText)
       .withShouldEndSession(false)
       .getResponse();
@@ -123,7 +126,7 @@ const ZoomIntentHandler = {
 
     return handlerInput.responseBuilder
       .speak(speechText)
-      .reprompt(speechText)
+      .reprompt(repromptText)
       .withSimpleCard('Move', speechText)
       .withShouldEndSession(false)
       .getResponse();
@@ -147,7 +150,7 @@ const MapTypeIntentHandler = {
 
     return handlerInput.responseBuilder
       .speak(speechText)
-      .reprompt(speechText)
+      .reprompt(repromptText)
       .withSimpleCard('Move', speechText)
       .withShouldEndSession(false)
       .getResponse();
@@ -166,7 +169,7 @@ const VRIntentHandler = {
 
     return handlerInput.responseBuilder
       .speak(speechText)
-      .reprompt(speechText)
+      .reprompt(repromptText)
       .withSimpleCard('Move', speechText)
       .withShouldEndSession(false)
       .getResponse();

@@ -1,7 +1,7 @@
 {
   "interactionModel": {
     "languageModel": {
-      "invocationName": "travel",
+      "invocationName": "take me somewhere",
       "intents": [{
           "name": "AMAZON.CancelIntent",
           "samples": [
@@ -35,6 +35,7 @@
             "{country}",
             "{weather}",
             "I like it {weather}",
+            "I like {weather} weather",
             "i want to visit {country}",
             "Where it is {weather}"
           ]
@@ -82,7 +83,10 @@
           "name": "VRIntent",
           "samples": [
             "I would like to see this in VR",
-            "Show me in VR"
+            "Can you show me this in VR",
+            "Open VR mode",
+            "Show me in VR",
+            "Go into VR mode"
           ],
           "slots": []
         }

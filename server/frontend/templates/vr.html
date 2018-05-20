@@ -19,11 +19,26 @@
     <script src="/static/L.Map.Sync.js"></script>
   </head>
   <body class="vr">
-    <div id="themap">
+    <div class="vrmap" id="themap">
 
     </div>
-    <div id="themapvr">
+    <div class="vrmap" id="themapvr">
 
     </div>
+    <script>
+
+        let rotX=0, rotY=0, rotZ=0;
+        function setRotate() {
+            $('.vrmap').css('transform', 'rotateX('+rotX+'deg) rotateY('+rotY+'deg) rotateZ('+rotZ+'deg) ');
+        }
+        function handleOrientation(event) {
+            rotZ = event.alpha;
+            rotX = -event.gamma;
+            rotY = event.beta;
+            setRotate();
+        }
+        window.addEventListener("deviceorientation", handleOrientation, true);
+
+    </script>
   </body>
 </html>
